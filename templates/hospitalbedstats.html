@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Bed Statistics</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2>Hospital Bed Statistics</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Hospital Name</th>
+                    <th>Hospital Code</th>
+                    <th>Total Normal Beds</th>
+                    <th>Total HICU Beds</th>
+                    <th>Total ICU Beds</th>
+                    <th>Total Ventilator Beds</th>
+                    <th>Total Booked Beds</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr>
+                        <td>{{ row.hname }}</td>
+                        <td>{{ row.hcode }}</td>
+                        <td>{{ row.total_normal_beds }}</td>
+                        <td>{{ row.total_hicu_beds }}</td>
+                        <td>{{ row.total_icu_beds }}</td>
+                        <td>{{ row.total_ventilator_beds }}</td>
+                        <td>{{ row.total_booked_beds }}</td>
+                    </tr>
+                {% endfor %}
+
+                {% if results|length > 0 %}
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td></td>
+                        <td>{{ results[-1].total_normal_beds }}</td>
+                        <td>{{ results[-1].total_hicu_beds }}</td>
+                        <td>{{ results[-1].total_icu_beds }}</td>
+                        <td>{{ results[-1].total_ventilator_beds }}</td>
+                        <td>{{ results[-1].total_booked_beds }}</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Optional: Add Bootstrap JS for additional features (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
